@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function computerPlay() {
+            let randomInt = Math.floor(Math.random() * 3) + 1;
+            if (randomInt == 1) {
+                return 'Rock';
+            } else if (randomInt == 2) {
+                return 'Paper';
+            } else {
+                return 'Scissors';
+            }
+        }
+
+        function playRPS(playerSelection, computerSelection) {
+            if (playerSelection.toUpperCase() == computerSelection.toUpperCase()) {
+                return 'It\'s a tie!'
+            } else if (playerSelection.toUpperCase() == 'ROCK' && computerSelection == 'Paper') {
+                return 'You lose, Paper beats Rock :)'
+            } else if (playerSelection.toUpperCase() == 'ROCK' && computerSelection == 'Scissors') {
+                return 'You win! Rock beats Scissors'
+            } else if (playerSelection.toUpperCase() == 'PAPER' && computerSelection == 'Scissors') {
+                return 'You lose, Scissors beat Paper :)'
+            } else if (playerSelection.toUpperCase() == 'PAPER' && computerSelection == 'Rock') {
+                return 'You win! Paper beats Rock'
+            } else if (playerSelection.toUpperCase() == 'SCISSORS' && computerSelection == 'Rock') {
+                return 'You lose, Rock beats Scissors :)'
+            } else {
+                return 'You win! Scissors beat Paper'
+            }
+        }
+
+        function game() {
+            let userScore = 0;
+            let compScore = 0;
+            for (let i = 0; i < 5; i++) {
+                let input = window.prompt('Pick: Rock, Paper, or Scissors?');
+                if (input.toUpperCase() == 'ROCK' || input.toUpperCase() == 'PAPER' || input.toUpperCase() == 'SCISSORS') {
+                    let result = playRPS(input, computerPlay())
+                    console.log(result)
+                    if (result.startsWith("It's")) {
+                        console.log(`Current Score for Round ${i}/5: YOU - ${userScore}, COMPUTER - ${compScore}`)
+                    } else if (result.startsWith("You win")) {
+                        ++userScore;
+                        console.log(`Current Score for Round ${i}/5: YOU - ${userScore}, COMPUTER - ${compScore}`)
+                    } else {
+                        ++compScore;
+                        console.log(`Current Score for Round ${i}/5: YOU - ${userScore}, COMPUTER - ${compScore}`)
+                    }
+
+                } else {
+                    console.log('Please input a valid choice for the game of Rock, Paper, Scissors.')
+                    --i;
+                }
+
+            }
+            if (userScore > compScore) {
+                console.log('Congratulations, you won!')
+            } else if (userScore < compScore) {
+                console.log('Sorry, you lost!')
+            } else {
+                console.log('It\'s officially a tie!')
+            }
+        }
+    </script>
+</body>
+</html>

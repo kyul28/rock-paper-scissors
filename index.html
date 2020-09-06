@@ -39,7 +39,7 @@
         function game() {
             let userScore = 0;
             let compScore = 0;
-            for (let i = 0; i < 5; i++) {
+            for (let i = 1; i < 6; i++) {
                 let input = window.prompt('Pick: Rock, Paper, or Scissors?');
                 if (input.toUpperCase() == 'ROCK' || input.toUpperCase() == 'PAPER' || input.toUpperCase() == 'SCISSORS') {
                     let result = playRPS(input, computerPlay())
